@@ -1,4 +1,5 @@
-// Margins
-.mb-8 {
-  margin-bottom: 8rem !important;
+.mb-8 { margin-bottom: 8rem !important; }
+
+.glow-text {
+  @include gradientText;
 }

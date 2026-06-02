@@ -1,0 +1,82 @@
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.6rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(10, 10, 15, 0.6);
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s ease;
+
+  &.scrolled {
+    border-bottom-color: $glass-border;
+    padding: 1.2rem 4rem;
+  }
+
+  @include respond(phone) { padding: 1.4rem 2rem; }
+
+  .nav-logo {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    @include gradientText;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3.2rem;
+    margin: 0;
+    padding: 0;
+
+    @include respond(tab-port) { display: none; }
+
+    a {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: $text-muted;
+      letter-spacing: 0.05em;
+      position: relative;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px; left: 0;
+        width: 0; height: 1.5px;
+        background: linear-gradient(90deg, $accent-primary, $accent-cyan);
+        transition: width 0.3s ease;
+      }
+
+      &:hover, &.active {
+        color: $text-primary;
+        &::after { width: 100%; }
+      }
+    }
+  }
+
+  .nav-cta {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $accent-primary;
+    border: 1px solid rgba(108, 99, 255, 0.4);
+    padding: 0.7rem 1.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+
+    @include respond(phone) { display: none; }
+
+    &:hover {
+      background: rgba(108, 99, 255, 0.15);
+      box-shadow: 0 0 20px $accent-glow;
+      color: $accent-primary;
+    }
+  }
+}

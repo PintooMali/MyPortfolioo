@@ -1,15 +1,24 @@
 // COLORS
-$primary-color: #dd5e89;
-$secondary-color: #f7bb97;
+$bg-dark:        #0a0a0f;
+$bg-card:        #111118;
+$accent-primary: #6c63ff;
+$accent-cyan:    #00f5d4;
+$accent-glow:    rgba(108, 99, 255, 0.4);
+$cyan-glow:      rgba(0, 245, 212, 0.3);
+$glass-bg:       rgba(255, 255, 255, 0.04);
+$glass-border:   rgba(255, 255, 255, 0.08);
+$text-primary:   #e8e8f0;
+$text-muted:     #6b7280;
+$white-color:    #ffffff;
+$dark-grey:      #0d0d14;
 
-$white-color: #fff;
-
-$dark-grey: #333333;
-$light-grey: #d2d2d2;
-
-$dark-blue-text: #272341; // For Headings
+// legacy aliases (keep bootstrap compat)
+$primary-color:    $accent-primary;
+$secondary-color:  $accent-cyan;
+$dark-blue-text:   $text-primary;
+$light-grey:       rgba(255,255,255,0.1);
 
 // FONT SIZE
 $default-font-size: 1.6rem;
-$big-font-size: 4rem;
-$mid-font-size: 2.5rem;
+$big-font-size:     4rem;
+$mid-font-size:     2.5rem;

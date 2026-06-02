@@ -1,94 +1,266 @@
-<!--
-  Hello!
-  -
-  Simplefolio is a clean and responsive portfolio template for Developers!
-  Created by Jacobo Martinez.
-  -
-  Github Repo: https://github.com/cobiwave/simplefolio/
-  Readme: https://github.com/cobiwave/simplefolio/README.md
-  -
-  For business & inquires, contact me -> jacobojavier98@gmail.com
--->
 <!DOCTYPE html>
-<html lang="en" class="sr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pintu Mali — Full-Stack Web Developer. React, Node.js, TypeScript, Android, ML."
+    />
+    <meta
+      name="keywords"
+      content="Pintu Mali, Pintu, Full Stack Developer, React, Node.js"
+    />
+    <meta property="og:title" content="Pintu Mali — Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Portfolio of Pintu Mali, Full-Stack Web & Android Developer."
+    />
+    <meta property="og:type" content="website" />
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+    <title>Pintu Mali — Developer</title>
 
-    <!-- Todo: put here your site title -->
-    <title>Pintukumar Mali</title>
-    <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
-    <meta name="keywords" content="Pintukumar Mali, Pintu, Javascript" />
-    <!-- Todo: improve your SEO by adding a small description of you -->
-    <meta name="description" content="Pintukumar | Developer" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- GSAP -->
     <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
       defer
-      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      defer
     ></script>
 
-    <!-- Todo: remove the below script once you finish your portfolio -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- tsParticles -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"
+      defer
+    ></script>
+
+    <!-- Typed.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"
+      defer
+    ></script>
+
+    <!-- Lenis smooth scroll -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"
+      defer
+    ></script>
   </head>
 
-  <!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
   <body>
-    <div id="top"></div>
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
 
-    <!-- **** Hero Section **** -->
+    <!-- ========== NAVBAR ========== -->
+    <nav id="navbar">
+      <div class="nav-logo">PM</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a
+        href="assets/resume.pdf"
+        target="_blank"
+        rel="noreferrer"
+        class="nav-cta"
+        >Resume ↗</a
+      >
+    </nav>
+
+    <!-- ========== HERO ========== -->
     <section id="hero" class="jumbotron">
+      <div id="particles-js"></div>
+      <svg width="0" height="0" style="position: absolute">
+        <defs>
+          <radialGradient id="sphereGrad" cx="35%" cy="35%" r="65%">
+            <stop offset="0%" stop-color="#8b7cf8" />
+            <stop offset="60%" stop-color="#6c63ff" />
+            <stop offset="100%" stop-color="#0d0d1a" />
+          </radialGradient>
+        </defs>
+      </svg>
       <div class="container">
-        <h1 class="hero-title load-hidden">
-          Hi, my name is <span class="text-color-main">Pintukumar Mali</span>
-          <br />
-          I'm the Full-stack Web Developer.
-        </h1>
-        <p class="hero-cta load-hidden">
-          <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
-            >Know more</a
-          >
-        </p>
-      </div>
-    </section>
-    <!-- /END Hero Section -->
-
-    <!-- **** About Section **** -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title load-hidden">About me</h2>
-        <div class="row about-wrapper">
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__image load-hidden">
-              <img
-                alt="Profile Image"
-                class="img-fluid rounded shadow-lg"
-                height="auto"
-                width="300px"
-                src="assets/profile.jpg"
-                alt="Profile Image"
-              />
+        <div class="hero-inner">
+          <div class="hero-text">
+            <span class="hero-greeting">Hello, Universe 👋</span>
+            <h1 class="hero-title">
+              I'm <span class="name-highlight">Pintu Mali</span>
+            </h1>
+            <p class="hero-subtitle">
+              <span id="typed-output"></span>
+            </p>
+            <div class="hero-cta">
+              <a
+                rel="noreferrer"
+                class="cta-btn cta-btn--hero"
+                href="#projects"
+              >
+                View My Work
+              </a>
+              <a
+                rel="noreferrer"
+                class="cta-btn cta-btn--resume"
+                href="#contact"
+              >
+                Get In Touch
+              </a>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
+          <div class="hero-image">
+            <div class="hero-svg-wrapper">
+              <svg
+                class="hero-svg"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <radialGradient id="sphereGrad" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#8b7cf8" />
+                    <stop offset="60%" stop-color="#6c63ff" />
+                    <stop offset="100%" stop-color="#0d0d1a" />
+                  </radialGradient>
+                  <clipPath id="sphereClip">
+                    <circle cx="200" cy="200" r="68" />
+                  </clipPath>
+                </defs>
+
+                <ellipse
+                  class="orbit orbit-1"
+                  cx="200"
+                  cy="200"
+                  rx="160"
+                  ry="45"
+                />
+                <ellipse
+                  class="orbit orbit-2"
+                  cx="200"
+                  cy="200"
+                  rx="45"
+                  ry="150"
+                />
+                <ellipse
+                  class="orbit orbit-3"
+                  cx="200"
+                  cy="200"
+                  rx="45"
+                  ry="160"
+                />
+
+                <circle class="sphere-core" cx="200" cy="200" r="70" />
+                <circle class="sphere-shine" cx="178" cy="178" r="20" />
+
+                <g class="code-lines" clip-path="url(#sphereClip)">
+                  <rect x="168" y="185" width="50" height="3" rx="2" />
+                  <rect x="172" y="194" width="36" height="3" rx="2" />
+                  <rect x="165" y="203" width="44" height="3" rx="2" />
+                  <rect x="175" y="212" width="28" height="3" rx="2" />
+                </g>
+
+                <!-- Dots with IDs for GSAP -->
+                <circle id="dot1" r="8" />
+                <circle id="dot2" r="8" />
+                <circle id="dot3" r="8" />
+                <circle id="dot4" r="8" />
+                <circle id="dot5" r="8" />
+                <circle id="dot6" r="8" />
+                <circle id="dot7" r="8" />
+                <circle id="dot8" r="8" />
+                <circle id="dot9" r="8" />
+                <circle id="dot10" r="8" />
+                <circle id="dot11" r="8" />
+                <circle id="dot12" r="8" />
+                <circle id="dot13" r="8" />
+                <circle id="dot14" r="8" />
+                <circle id="dot15" r="8" />
+              </svg>
+
+              <!-- Floating tech badges -->
+              <div class="tech-float tech-float--1">React</div>
+              <div class="tech-float tech-float--2">FastAPI</div>
+              <div class="tech-float tech-float--3">GenAI</div>
+              <div class="tech-float tech-float--4">SQL</div>
+              <div class="tech-float tech-float--5">{ }</div>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-indicator">
+          <span>Scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about">
+      <div class="container">
+        <span class="section-number">01</span>
+        <h2 class="section-title load-hidden">About Me</h2>
+        <span class="section-subtitle">Who I am</span>
+        <div class="about-wrapper">
+          <div class="col-md-5 col-sm-12">
+            <div class="about-wrapper__image load-hidden">
+              <div class="about-img-wrapper">
+                <img
+                  alt="Pintu Mali"
+                  src="assets/profile.png"
+                  height="auto"
+                  width="100%"
+                />
+                <div class="img-decoration"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7 col-sm-12">
             <div class="about-wrapper__info load-hidden">
               <p class="about-wrapper__info-text">
-                As a highly skilled and motivated Front-end Web Developer, 
-                I bring extensive experience and knowledge in HTML, 
-                CSS, JavaScript, jQuery, Bootstrap, React, Angular, Node.js, 
-                Ionic, and MySQL. I am committed to building visually appealing
-                and user-friendly web applications that meet the unique needs of
-                clients and end-users.
+                Full-Stack Software Developer focused on building scalable
+                enterprise platforms, GenAI-powered applications, and
+                cloud-native solutions from frontend to infrastructure.
+                Experienced in React, TypeScript, Django, FastAPI, AWS, and
+                modern automation architectures, RAG applications, CI/CD
+                workflows, and enterprise-grade integrations.
               </p>
               <p class="about-wrapper__info-text">
-                My hobbies are playing cricket, video games and I like to cook for family.
+                I enjoy designing clean, reusable systems, creating intuitive
+                user experiences, and solving complex business problems with
+                practical engineering solutions. Outside of work, you'll usually
+                find me exploring new technologies, gaming, playing cricket, or
+                experimenting with creative side projects.
               </p>
+              <div class="about-stats">
+                <div class="stat">
+                  <span class="stat-number" data-target="4">0</span>
+                  <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number" data-target="10">0</span>
+                  <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-number" data-target="2">0</span>
+                  <span class="stat-label">Years Exp.</span>
+                </div>
+              </div>
+
               <span class="d-flex mt-3">
                 <a
                   rel="noreferrer"
@@ -96,7 +268,7 @@
                   class="cta-btn cta-btn--resume"
                   href="https://drive.google.com/drive/folders/1dW_9I7qAHHHkghhX9IuAcHQ0D9bTspvR?usp=share_link"
                 >
-                  View Resume
+                  View Resume ↗
                 </a>
               </span>
             </div>
@@ -104,276 +276,394 @@
         </div>
       </div>
     </section>
-    <!-- /END About Section -->
 
-    <!-- **** Projects Section **** -->
+    <!-- ========== SKILLS ========== -->
+    <section id="skills">
+      <div class="container">
+        <span class="section-number">02</span>
+        <h2 class="section-title load-hidden">Skills</h2>
+        <span class="section-subtitle">What I work with</span>
+        <div class="skills-grid">
+          <div class="skill-category load-hidden">
+            <div class="skill-category-title">Frontend</div>
+            <div class="skill-tags">
+              <span class="skill-tag"
+                ><i class="fa-brands fa-react"></i> React</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-brands fa-angular"></i> Angular</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-brands fa-js"></i> TypeScript</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-brands fa-html5"></i> HTML5</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-brands fa-css3-alt"></i> CSS3 / SCSS</span
+              >
+              <span class="skill-tag">Tailwind CSS</span>
+              <span class="skill-tag">Redux</span>
+              <span class="skill-tag">Vite</span>
+            </div>
+          </div>
+
+          <div class="skill-category load-hidden">
+            <div class="skill-category-title">Backend</div>
+            <div class="skill-tags">
+              <span class="skill-tag"
+                ><i class="fa-brands fa-node-js"></i> Node.js</span
+              >
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">Prisma ORM</span>
+              <span class="skill-tag"
+                ><i class="fa-solid fa-database"></i> PostgreSQL</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-solid fa-database"></i> MySQL</span
+              >
+              <span class="skill-tag">JWT Auth</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Stripe</span>
+            </div>
+          </div>
+
+          <div class="skill-category load-hidden">
+            <div class="skill-category-title">Mobile & ML</div>
+            <div class="skill-tags">
+              <span class="skill-tag"
+                ><i class="fa-brands fa-android"></i> Android</span
+              >
+              <span class="skill-tag">Ionic</span>
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">NLP / Keywords</span>
+            </div>
+          </div>
+
+          <div class="skill-category load-hidden">
+            <div class="skill-category-title">Tools & DevOps</div>
+            <div class="skill-tags">
+              <span class="skill-tag"
+                ><i class="fa-brands fa-git-alt"></i> Git</span
+              >
+              <span class="skill-tag"
+                ><i class="fa-brands fa-github"></i> GitHub</span
+              >
+              <span class="skill-tag">Parcel</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">jQuery</span>
+              <span class="skill-tag"
+                ><i class="fa-brands fa-npm"></i> npm</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
     <section id="projects">
       <div class="container">
+        <span class="section-number">03</span>
+        <h2 class="section-title dark-blue-text load-hidden">Projects</h2>
+        <span class="section-subtitle">Things I've built</span>
         <div class="project-wrapper">
-          <h2 class="section-title dark-blue-text">Projects</h2>
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Day and Night Animation</h3>
-                <div>
-                  <p class="mb-4">
-                    This Project is just the animation of day and night scenery. All Stars,Sun, Moon and Ocean
-                    is created with the help of pure css and maths functions using javascript. I learned the 
-                    integration of javascript and css in efficient way to get the desired result.
-                    (Sun and Moon both are Clickable)
-                  </p>
+          <div class="bento-grid">
+            <!-- FEATURED: Netflix Clone -->
+            <div class="project-card featured load-hidden">
+              <div class="project-card__image">
+                <img src="assets/Netflix.png" alt="Netflix Clone" />
+                <div class="project-overlay"></div>
+                <span class="project-number">01</span>
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Netflix Clone</h3>
+                <p class="project-card__desc">
+                  Full-stack streaming platform with JWT auth, Stripe
+                  subscriptions, React Vite + TypeScript frontend, Express +
+                  Prisma + PostgreSQL backend, and Redux for state management.
+                  Built with production-grade security.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tech-tag tag-react">React</span>
+                  <span class="tech-tag tag-ts">TypeScript</span>
+                  <span class="tech-tag tag-node">Node.js</span>
+                  <span class="tech-tag tag-prisma">Prisma</span>
+                  <span class="tech-tag tag-stripe">Stripe</span>
                 </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="https://pintoomali.github.io/dayandnight/"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/PintooMali/dayandnight"
-                >
-                  Source Code
-                </a>
+                <div class="project-card__links">
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--hero"
+                    href="https://github.com/PintooMali/NVPix"
+                  >
+                    <i class="fa-brands fa-github"></i> Source Code
+                  </a>
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--resume"
+                    href="#NotDeployed"
+                  >
+                    Not Deployed
+                  </a>
+                </div>
               </div>
             </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
+
+            <!-- SmartHire -->
+            <div class="project-card load-hidden">
+              <div class="project-card__image">
+                <img src="assets/SmartHire.png" alt="SmartHire" />
+                <div class="project-overlay"></div>
+                <span class="project-number">02</span>
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">SmartHire</h3>
+                <p class="project-card__desc">
+                  Android app with an integrated ML model that scores resumes
+                  against job keywords. Dual login for employers & employees,
+                  ranked resume delivery, and an automated match threshold.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tech-tag tag-android">Android</span>
+                  <span class="tech-tag tag-ml">Machine Learning</span>
+                  <span class="tech-tag tag-js">Java</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--hero"
+                    href="#contact"
                   >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/daynnight.png"
-                    />
-                  </div>
-                </a>
+                    <i class="fa-solid fa-envelope"></i> Get APK
+                  </a>
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--resume"
+                    href="https://github.com/PintuMali/SmartHire"
+                  >
+                    <i class="fa-brands fa-github"></i> Source
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day & Night -->
+            <div class="project-card load-hidden">
+              <div class="project-card__image">
+                <img src="assets/daynnight.png" alt="Day and Night Animation" />
+                <div class="project-overlay"></div>
+                <span class="project-number">04</span>
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Day & Night Animation</h3>
+                <p class="project-card__desc">
+                  Pure CSS + JavaScript animation — stars, sun, moon, and ocean
+                  built entirely with math functions. Sun & Moon are clickable
+                  to toggle the scene.
+                </p>
+                <div class="project-card__tags">
+                  <span class="tech-tag tag-js">JavaScript</span>
+                  <span class="tech-tag tag-css">CSS3</span>
+                </div>
+                <div class="project-card__links">
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--hero"
+                    href="https://pintoomali.github.io/dayandnight/"
+                  >
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                  </a>
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    class="cta-btn cta-btn--resume"
+                    href="https://github.com/PintooMali/dayandnight"
+                  >
+                    <i class="fa-brands fa-github"></i> Source
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <!-- /END Project -->
 
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Find Pokemon</h3>
-                <div>
-                  <p class="mb-4">
-Simple react project to demonstrate api call, reusability of components and virtual dom
-                  </p>
-                </div>
+          <!-- Find Pokemon -->
+          <div class="project-card load-hidden">
+            <div class="project-card__image">
+              <img src="assets/pokemons.png" alt="Find Pokemon" />
+              <div class="project-overlay"></div>
+              <span class="project-number">03</span>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Find Pokémon</h3>
+              <p class="project-card__desc">
+                React app showcasing API integration, reusable component
+                architecture, and Virtual DOM performance with the PokéAPI.
+              </p>
+              <div class="project-card__tags">
+                <span class="tech-tag tag-react">React</span>
+                <span class="tech-tag tag-js">JavaScript</span>
+              </div>
+              <div class="project-card__links">
                 <a
                   rel="noreferrer"
                   target="_blank"
                   class="cta-btn cta-btn--hero"
                   href="https://pintoomali.github.io/pokemons/"
                 >
-                  See Live
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
                 </a>
                 <a
                   rel="noreferrer"
                   target="_blank"
-                  class="cta-btn text-color-main"
+                  class="cta-btn cta-btn--resume"
                   href="https://github.com/PintooMali/pokemons/"
                 >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/pokemons.png"
-                    />
-                  </div>
+                  <i class="fa-brands fa-github"></i> Source
                 </a>
               </div>
             </div>
           </div>
-          <!-- /END Project -->
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">NETFLIX CLONE</h3>
-                <div>
-                  <p class="mb-4">
-                    Introducing Netflix-Clone – a Netflix-inspired streaming app with a focus on security and modern tech. 
-                    Built on React Vite, TypeScript, and featuring React Redux for smooth user interaction. 
-                    Secure authentication using JWT ensures user data safety. 
-                    The backend, powered by Express, Prisma and PostgreSQL, guarantees efficient data management.
-                    Tailwind CSS adds a sleek visual touch, and app operates on a subscription model with seamless
-                    Stripe API integration for secure payments. Elevate your streaming experience with NetFlix-Clone 
-                    – where innovation meets entertainment.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#NotDeployed"
-                >
-                  Not Deployed
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/PintooMali/NVPix"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="./assets//Netflix.png"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">SmartHire</h3>
-                <div>
-                  <p class="mb-4">
-
-                    Introducing SmartHire – your go-to Android application revolutionizing the job search process. 
-                    Seamlessly login as an employee or employer to access and apply for jobs effortlessly. 
-                    With a built-in machine learning model, SmartHire evaluates resumes based on keywords, 
-                    providing job seekers with a score. Applicants can only apply if they meet the score threshold, 
-                    ensuring quality matches. Employers receive resumes with rankings, streamlining the hiring process. 
-                    Elevate your job search experience with SmartHire – where technology meets efficiency.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#NotDeployed"
-                >
-                  Contact Me For Apk
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/PintuMali/SmartHire"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="./assets//SmartHire.png"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
         </div>
       </div>
     </section>
-    <!-- /END Projects Section -->
 
-    <!-- **** Contact Section **** -->
+    <!-- ========== CONTACT ========== -->
     <section id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrapper load-hidden">
-          <p class="contact-wrapper__text">pintoomali1@gmail.com</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            class="cta-btn cta-btn--resume"
-            href="mailto:pintoomali1@gmail.com"
-            >Mail me</a
+        <span class="section-number">04</span>
+        <h2 class="section-title load-hidden">Contact</h2>
+        <span class="section-subtitle">Let's work together</span>
+        <div class="contact-inner load-hidden">
+          <div class="contact-left">
+            <p class="contact-tagline">
+              Have a project in mind, a role to fill, or just want to say hi? My
+              inbox is always open. I'll get back to you within 24 hours.
+            </p>
+            <div class="contact-direct">
+              <a href="mailto:pintoomali1@gmail.com" class="contact-link-item">
+                <div class="contact-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <span>pintoomali1@gmail.com</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pintoo-mali-476b9624a/"
+                target="_blank"
+                rel="noreferrer"
+                class="contact-link-item"
+              >
+                <div class="contact-icon">
+                  <i class="fa-brands fa-linkedin"></i>
+                </div>
+                <span>linkedin.com/in/pintoo-mali</span>
+              </a>
+              <a
+                href="https://github.com/PintooMali"
+                target="_blank"
+                rel="noreferrer"
+                class="contact-link-item"
+              >
+                <div class="contact-icon">
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <span>github.com/PintooMali</span>
+              </a>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            action="mailto:pintoomali1@gmail.com"
+            method="GET"
+            enctype="text/plain"
           >
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="body"
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn--hero form-submit">
+              Send Message <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
         </div>
       </div>
     </section>
-    <!-- /END Contact Section -->
 
-    <!-- **** Footer Section **** -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer navbar-static-bottom">
       <div class="container">
-        <a rel="noreferrer" href="#top" class="back-to-top">
+        <a rel="noreferrer" href="#hero" class="back-to-top">
           <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
         </a>
         <div class="social-links">
-          <a rel="noreferrer" href="https://www.instagram.com/pintooo1308/?hl=en" target="_blank">
-            <i class="fa fa-instagram fa-inverse"></i>
+          <a
+            rel="noreferrer"
+            href="https://www.instagram.com/pintooo1308/?hl=en"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <i class="fa-brands fa-instagram"></i>
           </a>
-          <a rel="noreferrer" href="https://www.linkedin.com/in/pintoo-mali-476b9624a/" target="_blank">
-            <i class="fa fa-linkedin fa-inverse"></i>
+          <a
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/pintoo-mali-476b9624a/"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin"></i>
           </a>
-          <a rel="noreferrer" href="https://github.com/PintooMali" target="_blank">
-            <abbr title="PintooMali"><i class="fa fa-github fa-inverse"></i></abbr>
+          <a
+            rel="noreferrer"
+            href="https://github.com/PintooMali"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
           </a>
         </div>
         <hr />
         <p class="footer__text">
-          © 2023 - Template customized by
-          <a rel="noreferrer" href="https://github.com/PintooMali" target="_blank"
+          © <span id="footer-year"></span> — Built by
+          <a
+            rel="noreferrer"
+            href="https://github.com/PintooMali"
+            target="_blank"
             >Pintu Mali</a
           >
         </p>
       </div>
     </footer>
-    <!-- /END Footer Section -->
 
     <script defer type="module" src="index.js"></script>
   </body>

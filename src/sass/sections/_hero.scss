@@ -1,68 +1,472 @@
 #hero {
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   align-items: center;
-  border-bottom: 0px;
-  background: $white-color;
-  font-weight: 400;
-  color: $dark-blue-text;
-  padding: 0rem 5.6rem;
-  margin-bottom: 0;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
-
-  // Set position sticky so the jumbotron stays fixed while you scroll.
-  // position: sticky;
-
-  // If you want to set a background image on the hero section, uncomment these with your custom image
-
-  /* background: url("/src/assets/[your-image].png");
-  background-position: center;
-  background-size: cover; */
+  background: $bg-dark;
+  position: relative;
+  overflow: hidden;
+  padding: 0 5.6rem;
 
   @include respond(phone) {
-    padding: 0rem $default-font-size;
+    padding: 0 2rem;
   }
 
-  .hero-title {
-    font-size: 5.6rem;
-    font-weight: 700;
-    margin-bottom: 3.2rem;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 60rem;
+    height: 60rem;
+    background: radial-gradient(circle, rgba(108, 99, 255, 0.12) 0%, transparent 70%);
+    top: -10rem;
+    left: -20rem;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.08) 0%, transparent 70%);
+    bottom: 0;
+    right: -15rem;
+    pointer-events: none;
+  }
+
+  #particles-js {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6rem;
     text-align: left;
 
     @include respond(tab-land) {
-      font-size: 4rem;
-    }
-    @include respond(tab-port) {
-      font-size: 3.6rem;
+      flex-direction: column-reverse;
       text-align: center;
+      gap: 4rem;
     }
+  }
+
+  .hero-text {
+    flex: 1;
+  }
+
+  .hero-greeting {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $accent-primary;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-size: 6.4rem;
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 2rem;
+    color: $text-primary;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.4s forwards;
+
+    .name-highlight {
+      @include gradientText;
+    }
+
+    @include respond(tab-land) {
+      font-size: 4.8rem;
+    }
+
     @include respond(phone) {
-      font-size: 3.5rem;
-      line-height: 1.5;
+      font-size: 3.6rem;
     }
+
     @include respond(phone-xs) {
       font-size: 2.8rem;
     }
   }
 
+  .hero-subtitle {
+    font-size: 2rem;
+    color: $text-muted;
+    margin-bottom: 3.2rem;
+    min-height: 3rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.6s forwards;
+
+    .typed-cursor {
+      color: $accent-cyan;
+    }
+
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
+  }
+
   .hero-cta {
     display: flex;
+    gap: 1.6rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.8s forwards;
 
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       justify-content: center;
     }
 
-    & a {
-      font-size: 2.4rem;
+    @include respond(phone) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .hero-image {
+    flex-shrink: 0;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 0.5s forwards;
+
+    .hero-svg-wrapper {
+      position: relative;
+      width: 36rem;
+      height: 36rem;
+
+      @include respond(tab-land) {
+        width: 28rem;
+        height: 28rem;
+      }
 
       @include respond(phone) {
-        font-size: 2rem;
+        width: 22rem;
+        height: 22rem;
       }
     }
+
+    .hero-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+
+      .orbit {
+        fill: none;
+        stroke-width: 1.5;
+        opacity: 0.5;
+
+        &-1 {
+          stroke: $accent-primary;
+          transform-origin: 200px 200px;
+        }
+
+        &-2 {
+          stroke: $accent-cyan;
+          transform-origin: 200px 200px;
+          transform: rotate(-22deg);
+        }
+
+        &-3 {
+          stroke: $accent-primary;
+          opacity: 0.3;
+          transform-origin: 200px 200px;
+          transform: rotate(45deg);
+        }
+      }
+
+
+      .sphere-core {
+        fill: url(#sphereGrad);
+        filter: drop-shadow(0 0 24px rgba(108, 99, 255, 0.6));
+      }
+
+      .sphere-shine {
+        fill: rgba(255, 255, 255, 0.08);
+      }
+
+      .code-lines rect {
+        fill: rgba(0, 245, 212, 0.5);
+        animation: codePulse 2.5s ease infinite;
+
+        &:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+
+        &:nth-child(4) {
+          animation-delay: 0.9s;
+        }
+      }
+
+
+      // orbit-1 dots — purple/violet tones
+      #dot1 {
+        fill: #6c63ff;
+        filter: drop-shadow(0 0 6px #6c63ff);
+      }
+
+      #dot2 {
+        fill: #a78bfa;
+        filter: drop-shadow(0 0 6px #a78bfa);
+      }
+
+      #dot3 {
+        fill: #818cf8;
+        filter: drop-shadow(0 0 6px #818cf8);
+      }
+
+      #dot4 {
+        fill: #c4b5fd;
+        filter: drop-shadow(0 0 6px #c4b5fd);
+      }
+
+      #dot5 {
+        fill: #7c3aed;
+        filter: drop-shadow(0 0 6px #7c3aed);
+      }
+
+      // orbit-2 dots — cyan/teal tones
+      #dot6 {
+        fill: #00f5d4;
+        filter: drop-shadow(0 0 6px #00f5d4);
+      }
+
+      #dot7 {
+        fill: #06b6d4;
+        filter: drop-shadow(0 0 6px #06b6d4);
+      }
+
+      #dot8 {
+        fill: #67e8f9;
+        filter: drop-shadow(0 0 6px #67e8f9);
+      }
+
+      #dot9 {
+        fill: #22d3ee;
+        filter: drop-shadow(0 0 6px #22d3ee);
+      }
+
+      #dot10 {
+        fill: #0891b2;
+        filter: drop-shadow(0 0 6px #0891b2);
+      }
+
+      // orbit-3 dots — white/silver tones
+      #dot11 {
+        fill: #ffffff;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+      }
+
+      #dot12 {
+        fill: #e2e8f0;
+        filter: drop-shadow(0 0 6px rgba(226, 232, 240, 0.9));
+      }
+
+      #dot13 {
+        fill: #94a3b8;
+        filter: drop-shadow(0 0 6px #94a3b8);
+      }
+
+      #dot14 {
+        fill: #cbd5e1;
+        filter: drop-shadow(0 0 6px #cbd5e1);
+      }
+
+      #dot15 {
+        fill: #f1f5f9;
+        filter: drop-shadow(0 0 6px rgba(241, 245, 249, 0.9));
+      }
+
+
+    }
+
+    .tech-float {
+      position: absolute;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 0.6rem 1.4rem;
+      border-radius: 100px;
+      background: rgba(108, 99, 255, 0.12);
+      border: 1px solid rgba(108, 99, 255, 0.3);
+      color: $text-primary;
+      white-space: nowrap;
+      backdrop-filter: blur(8px);
+      animation: floatBadge 4s ease-in-out infinite;
+
+      &--1 {
+        top: 8%;
+        left: -8%;
+        animation-delay: 0s;
+        border-color: rgba(108, 99, 255, 0.4);
+        color: #a78bfa;
+      }
+
+      &--2 {
+        top: 20%;
+        right: -12%;
+        animation-delay: 0.6s;
+        border-color: rgba(0, 245, 212, 0.4);
+        color: $accent-cyan;
+      }
+
+      &--3 {
+        bottom: 28%;
+        left: -14%;
+        animation-delay: 1.2s;
+        border-color: rgba(108, 99, 255, 0.3);
+        color: #818cf8;
+      }
+
+      &--4 {
+        bottom: 12%;
+        right: -8%;
+        animation-delay: 1.8s;
+        border-color: rgba(0, 245, 212, 0.3);
+        color: $accent-cyan;
+      }
+
+      &--5 {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2rem;
+        background: rgba(108, 99, 255, 0.2);
+        border-color: rgba(108, 99, 255, 0.5);
+        color: $accent-primary;
+        animation: floatBadge 3s ease-in-out infinite;
+        animation-delay: 0.4s;
+      }
+    }
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease 1.4s forwards;
+
+    @include respond(tab-land) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      margin-top: 2rem;
+    }
+
+    span {
+      font-size: 1.1rem;
+      color: $text-muted;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1.5px;
+      height: 5rem;
+      background: linear-gradient($accent-primary, transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+  }
+
+}
+
+// ── Keyframes — ONE definition each ────────────────────────────
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scaleY(0.6);
+  }
+}
+
+@keyframes codePulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes floatBadge {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes orbitSpin1 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitSpin2 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitSpin3 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

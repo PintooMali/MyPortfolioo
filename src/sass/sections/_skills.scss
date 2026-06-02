@@ -1,0 +1,93 @@
+#skills {
+    background: $bg-card;
+    padding: 10rem 0;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center top, rgba(108, 99, 255, 0.06) 0%, transparent 60%);
+        pointer-events: none;
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+        gap: 2.4rem;
+        margin-top: 2rem;
+        text-align: left;
+    }
+
+    .skill-category {
+        @include glass;
+        border-radius: 16px;
+        padding: 2.8rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            border-color: rgba(108, 99, 255, 0.3);
+            box-shadow: 0 0 40px rgba(108, 99, 255, 0.08);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: $accent-primary;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            &::before {
+                content: "";
+                width: 2.4rem;
+                height: 2px;
+                background: linear-gradient(90deg, $accent-primary, $accent-cyan);
+                display: block;
+            }
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: $text-muted;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid $glass-border;
+            border-radius: 100px;
+            padding: 0.6rem 1.4rem;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.25s ease, opacity 0.3s ease, transform 0.3s ease;
+
+            &.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            &:hover {
+                color: $text-primary;
+                border-color: $accent-primary;
+                background: rgba(108, 99, 255, 0.1);
+                transform: translateY(-2px);
+            }
+
+            i {
+                font-size: 1.4rem;
+                color: $accent-cyan;
+            }
+        }
+    }
+}

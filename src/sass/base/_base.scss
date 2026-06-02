@@ -1,28 +1,106 @@
-html {
-  font-size: 62.5%;
-
-  &.sr .load-hidden {
-    visibility: hidden;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
+html {
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
-/* Scrollbar */
+body {
+  font-family: "Inter", "Montserrat", sans-serif;
+  background-color: $bg-dark;
+  color: $text-primary;
+  text-align: center;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+::selection {
+  background: $accent-primary;
+  color: $white-color;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: $bg-dark;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: $light-grey;
+  background: linear-gradient($accent-primary, $accent-cyan);
+  border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: $primary-color;
+
+/* Custom cursor */
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: $accent-cyan;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
+#cursor-outline {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(108, 99, 255, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+body:has(a:hover) #cursor-outline,
+body:has(button:hover) #cursor-outline {
+  width: 56px;
+  height: 56px;
+  border-color: $accent-cyan;
+}
+
+/* Noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.4;
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, $accent-primary, $accent-cyan);
+  z-index: 99999;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+  #cursor-dot,
+  #cursor-outline {
+    display: none;
+  }
 }
