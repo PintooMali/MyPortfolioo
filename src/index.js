@@ -155,7 +155,7 @@ window.addEventListener("load", () => {
 // ════════════════════════════════════════════════════════════════
 // ISEKAI WORLD
 // ════════════════════════════════════════════════════════════════
-const ISEKAI_PASSWORD = "isekai is my favourite genere";
+const ISEKAI_PASSWORD = "kaiblackdronzer";
 const DATA_URL =
   "https://raw.githubusercontent.com/PintooMali/react-test/main/data.json";
 const FAV_KEY = "isekai_favs";
