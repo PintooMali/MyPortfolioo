@@ -155,7 +155,8 @@ window.addEventListener("load", () => {
 // ════════════════════════════════════════════════════════════════
 // ISEKAI WORLD
 // ════════════════════════════════════════════════════════════════
-const ISEKAI_PASSWORD = "kaiblackdronzer";
+const ISEKAI_PASSWORD_HASH =
+  "06c584c1f9d323956be1c1654901aecd4f39e732f21b89cc10059fa41a6453a7";
 const DATA_URL =
   "https://raw.githubusercontent.com/PintooMali/react-test/main/data.json";
 const FAV_KEY = "isekai_favs";
@@ -208,8 +209,16 @@ isekaiInput.addEventListener(
   (e) => e.key === "Enter" && checkPassword()
 );
 
-function checkPassword() {
-  if (isekaiInput.value.trim() === ISEKAI_PASSWORD) {
+async function checkPassword() {
+  const buf = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(isekaiInput.value.trim())
+  );
+  const hash = Array.from(new Uint8Array(buf))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+
+  if (hash === ISEKAI_PASSWORD_HASH) {
     closeModal();
     openIsekaiPage();
   } else {
